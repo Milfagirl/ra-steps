@@ -20,7 +20,7 @@ function InputForm(props) {
             collectValue.every(elem => elem.date !== value1) ?
                 collectValue = [...collectValue, { date: value1, distance: value2 }] :
                 collectValue = [...(newArray.filter(elem => elem.date !== value1)), { date: value1, distance: ((collectValue.find(elem => elem.date === value1)).distance + value2) }];
-            collectValue.sort((a, b) => new Date(a.date) - new Date(b.date));
+            collectValue.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             return collectValue
         });
@@ -36,7 +36,6 @@ function InputForm(props) {
     }
 
     const deleteInCollect = (e) => {
-        console.log(e.nativeEvent.path[2].childNodes[0].innerText);
         const date = e.nativeEvent.path[2].childNodes[0].innerText
         const newArray = collectValue.filter((elem) => elem.date !== date);
         setCollectValue(collectValue => newArray);
