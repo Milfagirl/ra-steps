@@ -5,7 +5,7 @@ function CollectItem(props) {
     const {value, deleteInCollect} = props;
     
     return (
-        <div className ="collect-item" id = {nanoid().substr(0, 4)}>
+        <div className ="collect-item" key = {nanoid().substr(0, 4)}>
             <span type = 'date'>{value.date}</span>
             <span>{value.distance}</span>
             <span>
