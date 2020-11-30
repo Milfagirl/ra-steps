@@ -20,7 +20,9 @@ function InputForm(props) {
             collectValue.every(elem => elem.date !== value1) ?
                 collectValue = [...collectValue, { date: value1, distance: value2 }] :
                 collectValue = [...(newArray.filter(elem => elem.date !== value1)), { date: value1, distance: ((collectValue.find(elem => elem.date === value1)).distance + value2) }];
-            collectValue.sort((a, b) => new Date(b.date) - new Date(a.date));
+            collectValue.sort((a, b) => {
+                return new Date(`${b.date.substr(3,2)}.${b.date.substr(0,2)}.${b.date.substr(6,4)}`) - new Date(`${a.date.substr(3,2)}.${a.date.substr(0,2)}.${a.date.substr(6,4)}`)
+            });
 
             return collectValue
         });
